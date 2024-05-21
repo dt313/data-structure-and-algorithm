@@ -7,12 +7,12 @@
 
 Thuật toán :
 ví dụ `a = 10`, `b = 2`;
+
+`gcd(10,2)`:
 kiểm tra:
+
 - nếu b bằng 0 thì a là ước chung lớn nhất (vì ước chung của một số và 0 là chính nó)
-- nếu không thì 
-    - đệ quy `gcd(b, a % b)`  ---> `gcd(2, 0)`
-    - Lúc này `b = 0`--->  ước chung lớn nhất là `a = 2`
-
-
-
-
+- nếu không thì
+  - đệ quy `gcd(2, 10 % 2)` ---> `gcd(2, 0)`
+  - Lúc này `b = 0`
+    ---> ước chung lớn nhất là `a = 2`
