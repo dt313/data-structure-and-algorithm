@@ -27,6 +27,7 @@ void print_list_node(ListNode **head) {
 
     if(is_empty(*head) == 1) {
         printf("empty list \n\n");
+        return;
     }
     int i = 0;
     ListNode *temp = (ListNode *) malloc(sizeof(ListNode));
@@ -40,7 +41,7 @@ void print_list_node(ListNode **head) {
 }
 
 
-void insert_first(element value, ListNode **head) {
+void insert_first( ListNode **head, element value) {
     ListNode *temp = (ListNode *) malloc(sizeof(ListNode));
     temp->data = value;
     temp->link = *head;
@@ -48,7 +49,7 @@ void insert_first(element value, ListNode **head) {
 }
 
 
-void insert_last(element value, ListNode **head) {
+void insert_last( ListNode **head, element value) {
     ListNode *pre = *head;
     while(pre->link != NULL) {
         pre = pre->link;
@@ -145,6 +146,10 @@ ListNode *get_node_by_index(ListNode *head, int index) {
         printf("index starts from 1 ");
         return NULL;
     }
+    if(index > size(head) - 1) {
+        printf("can not get node - out of lenght\n");
+        return NULL;
+    }
 
     ListNode *temp = head;
     for(int i = 0; i < index -1;i++) {
@@ -159,6 +164,20 @@ void reset(ListNode **head) {
     *head = NULL;
 }
 
+void reverse(ListNode **head) {
+    ListNode *current , *pre , *next;
+    current = *head;
+    pre = NULL;
+    while(current != NULL) {
+        next = current->link;
+        current->link = pre;
+        pre = current;
+        current = next;
+    }
+
+    *head = pre;
+
+}
 
 
 int main() {
@@ -167,9 +186,13 @@ int main() {
 
     printf("after insert first(10,5,0)\n");
 
-    insert_first(10,&head);
-    insert_first(5,&head);
-    insert_first(0,&head);
+    insert_first(&head,10);
+    insert_first(&head,5);
+    insert_first(&head,0);
+    print_list_node(&head);
+
+    printf("after reverse\n");
+    reverse(&head);
     print_list_node(&head);
 
     ListNode *a = get_node_by_index(head, 1);
