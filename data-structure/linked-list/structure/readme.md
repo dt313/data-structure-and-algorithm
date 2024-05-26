@@ -1,6 +1,6 @@
 # Link list
 
-![image](./linked_list.png)
+![image](./img/img.png)
 
 - Function :
     - insert
@@ -14,4 +14,4 @@
     - reset
     - print_list_node
 
-![image](./result.png)
+![image](./img/result.png)
